@@ -209,6 +209,8 @@ public class ListContentFragment extends Fragment implements TimePicker.OnTimeCh
         }
 
         mMapView.getMapAsync(this);
+        //onMapReady esta implementado dentro de esta clase, lo de abajo quedo opsoleto
+        //lo pensaba borrar cuando sea seguro que ande toda la app
                 /*new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap mMap) {
@@ -240,7 +242,8 @@ public class ListContentFragment extends Fragment implements TimePicker.OnTimeCh
             googleMap.setInfoWindowAdapter(ventanaInfo);
             marcarEstacionamientos();
             estCalle = cargarUltimoEstacionamiento(ID_USUARIO_ACTUAL);
-            //enfocarMapaEnUbicacion(ubicacionActual);
+
+            enfocarMapaEnUbicacion(ubicacionActual);
         }
         else enfocarMapaEnUbicacion(ubicacionActual);
 
@@ -248,6 +251,7 @@ public class ListContentFragment extends Fragment implements TimePicker.OnTimeCh
         googleMap.setMyLocationEnabled(true);
         googleMap.setOnInfoWindowClickListener(this);
         googleMap.setInfoWindowAdapter(ventanaInfo);
+
         enfocarMapaEnUbicacion(ubicacionActual);
         marcarEstacionamientos();
 
@@ -563,6 +567,9 @@ public class ListContentFragment extends Fragment implements TimePicker.OnTimeCh
     /**         Metodos de Ubicacion / Servicios de Ubicacion             */
     /**-------------------------------------------------------------------*/
 
+    private void getUbicacion(){
+
+    }
     /**
      * Guarda el ultimo lugar en donde se realizo el estacionamiento
      */
@@ -597,13 +604,14 @@ public class ListContentFragment extends Fragment implements TimePicker.OnTimeCh
         if(location!=null){
             msg = getResources().getString(R.string.ubicacionActualEncontrada);
             Log.v(TAG,msg);
-           /* LatLng target = new LatLng(location.getLatitude(), location.getLongitude());
-            CameraPosition position = this.mapa.getCameraPosition();
+            LatLng target = new LatLng(location.getLatitude(), location.getLongitude());
+            CameraPosition position = this.googleMap.getCameraPosition();
             CameraPosition.Builder builder = new CameraPosition.Builder();
             builder.zoom(15);
             builder.target(target);
-            this.mapa.animateCamera(CameraUpdateFactory.newCameraPosition(builder.build()));*/
+            this.googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(builder.build()));
             String msgToast = location.getLatitude() + ", " + location.getLongitude();
+
 
             //Muevo la camara
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(),location.getLongitude()),17f),200,null);

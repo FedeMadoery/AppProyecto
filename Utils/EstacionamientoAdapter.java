@@ -1,9 +1,7 @@
 package com.example.puchoo.mapmaterial.Utils;
 
 import android.content.Context;
-import android.content.Intent;
 import android.location.Location;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.puchoo.mapmaterial.Modelo.Estacionamiento;
-import com.example.puchoo.mapmaterial.R;
-import com.example.puchoo.mapmaterial.MapsContentFragment;
-import com.example.puchoo.mapmaterial.VistasAndControllers.ReservarActivity;
-import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
